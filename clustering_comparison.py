@@ -1,8 +1,7 @@
-print(__doc__)
-
 import time
 
 import numpy as np
+
 import matplotlib.pyplot as plt
 
 from sklearn import cluster, datasets
@@ -24,16 +23,19 @@ noisy_circles = datasets.make_circles(n_samples=n_samples, factor=.5,
 # Gera um dataset com formato de 2 "meia-luas"
 noisy_moons = datasets.make_moons(n_samples=n_samples, noise=.05)
 
+# Gera um dataset com formato de bolas
 blobs = datasets.make_blobs(n_samples=n_samples, random_state=8)
+
+# Gera apenas pontos espalhados sem forma
 no_structure = np.random.rand(n_samples, 2), None
 
 colors = np.array([x for x in 'bgrcmykbgrcmykbgrcmykbgrcmyk'])
 colors = np.hstack([colors] * 20)
 
 clustering_names = [
-    'MiniBatchKMeans', 'AffinityPropagation', 'MeanShift',
-    'SpectralClustering', 'Ward', 'AgglomerativeClustering',
-    'DBSCAN', 'Birch']
+    '[MBKMeans]', '[Aff.Propag.]', '[MeanShift]',
+    '[Spec.Cluster.]', '[Ward(Hier.)]', '[Agg.Cluster.]',
+    '[DBSCAN]', '[Birch(Hier.)]']
 
 plt.figure(figsize=(len(clustering_names) * 2 + 3, 9.5))
 plt.subplots_adjust(left=.02, right=.98, bottom=.001, top=.96, wspace=.05,
@@ -63,7 +65,7 @@ for i_dataset, dataset in enumerate(datasets):
     ms = cluster.MeanShift(bandwidth=bandwidth, bin_seeding=True)
 
     # Batch Kmeans é uma variação do Kmeans que converge mais rapidamente
-    # porém há uma perda na qualidade dos clusters
+    # porém há uma perda na qualidade dos clusters;
     # por padrão, essa função já usa a otimização do Kmeans++(a escolha inteligente dos centroides iniciais)
 
     two_means = cluster.MiniBatchKMeans(n_clusters=2)
@@ -121,6 +123,5 @@ for i_dataset, dataset in enumerate(datasets):
                  transform=plt.gca().transAxes, size=15,
                  horizontalalignment='right')
         plot_num += 1
-
 
 plt.show()
