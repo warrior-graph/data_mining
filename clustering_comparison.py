@@ -10,8 +10,9 @@ from sklearn.preprocessing import StandardScaler
 
 np.random.seed(0)
 
-# Gera os datasets que foram escolhidos de forma que a escalabilidade dos algoritmos
-# seja notada, mas não tão grande para gerar grandes tempos de execução
+# Gera os datasets que foram escolhidos de forma que a
+# escalabilidade dos algoritmos seja notada, mas não tão grande para gerar
+# grande tempo de execução
 
 # A quantidade de pontos ou amostras
 n_samples = 1500
@@ -66,10 +67,10 @@ for i_dataset, dataset in enumerate(datasets):
 
     # Batch Kmeans é uma variação do Kmeans que converge mais rapidamente
     # porém há uma perda na qualidade dos clusters;
-    # por padrão, essa função já usa a otimização do Kmeans++(a escolha inteligente dos centroides iniciais)
+    # por padrão, essa função já usa a otimização do Kmeans++(a escolha
+    # inteligente dos centroides iniciais)
 
     two_means = cluster.MiniBatchKMeans(n_clusters=2)
-
 
     ward = cluster.AgglomerativeClustering(n_clusters=2, linkage='ward',
                                            connectivity=connectivity)
@@ -80,8 +81,7 @@ for i_dataset, dataset in enumerate(datasets):
     # eps é um parâmetro que indica a distância máxima entre duas amostras
     # para considerá-las vizinhas
 
-    dbscan = cluster.DBSCAN(eps=.2)
-
+    dbscan = cluster.DBSCAN(eps=.05)
 
     affinity_propagation = cluster.AffinityPropagation(damping=.9,
                                                        preference=-200)
