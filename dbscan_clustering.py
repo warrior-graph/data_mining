@@ -13,42 +13,37 @@ X, labels_true = make_blobs(n_samples=750, centers=centers, cluster_std=0.4,
 
 X = StandardScaler().fit_transform(X)
 
-db = DBSCAN(eps=0.3, min_samples=10).fit(X)
-core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
-core_samples_mask[db.core_sample_indices_] = True
-labels = db.labels_
+eps_range = [0.1, 0.125, 0.15, 0.175,
+             0.2, 0.225, 0.25, 0.275,
+             0.3, 0.325, 0.35, 0.375, 0.4]
 
-# Number of clusters in labels, ignoring noise if present.
-n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)
 
-print('Estimated number of clusters: %d' % n_clusters_)
-print("Homogeneity: %0.3f" % metrics.homogeneity_score(labels_true, labels))
-print("Completeness: %0.3f" % metrics.completeness_score(labels_true, labels))
-print("V-measure: %0.3f" % metrics.v_measure_score(labels_true, labels))
-print("Adjusted Rand Index: %0.3f"
-      % metrics.adjusted_rand_score(labels_true, labels))
-print("Adjusted Mutual Information: %0.3f"
-      % metrics.adjusted_mutual_info_score(labels_true, labels))
-print("Silhouette Coefficient: %0.3f"
-      % metrics.silhouette_score(X, labels))
+plt_x = []
+plt_y = []
 
-# Black removed and is used for noise instead.
-unique_labels = set(labels)
-colors = plt.cm.Spectral(np.linspace(0, 1, len(unique_labels)))
-for k, col in zip(unique_labels, colors):
-    if k == -1:
-        # Black used for noise.
-        col = 'k'
+for e in eps_range:
 
-    class_member_mask = (labels == k)
+    db = DBSCAN(eps=e, min_samples=10).fit(X)
+    core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
+    core_samples_mask[db.core_sample_indices_] = True
+    labels = db.labels_
 
-    xy = X[class_member_mask & core_samples_mask]
-    plt.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=col,
-             markeredgecolor='k', markersize=14)
+    # Number of clusters in labels, ignoring noise if present.
+    n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)
+    silhouette_avg = metrics.silhouette_score(X, labels)
 
-    xy = X[class_member_mask & ~core_samples_mask]
-    plt.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=col,
-             markeredgecolor='k', markersize=6)
+    print("DBSCAN")
+    print("For n_clusters = ", n_clusters_, "/ the silhouette_avg is: ", silhouette_avg)
+    print("EPS = ", e)
 
-plt.title('Estimated number of clusters: %d' % n_clusters_)
+    plt_y.append(silhouette_avg * 10)
+    plt_x.append(e * 30)
+
+plt.plot(plt_x, plt_y, 'ro')
+plt.ylabel("Silhouette AVG(times 10)")
+plt.xlabel("EPS(times 30)")
+plt.axis([0, 13, -5, 10])
+
 plt.show()
+
+

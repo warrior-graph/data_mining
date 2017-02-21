@@ -1,0 +1,39 @@
+DBSCAN
+For n_clusters =  12 / the silhouette_avg is:  -0.365852569975
+EPS =  0.1
+DBSCAN
+For n_clusters =  6 / the silhouette_avg is:  -0.179877917737
+EPS =  0.125
+DBSCAN
+For n_clusters =  4 / the silhouette_avg is:  0.249893122872
+EPS =  0.15
+DBSCAN
+For n_clusters =  3 / the silhouette_avg is:  0.469676901763
+EPS =  0.175
+DBSCAN
+For n_clusters =  3 / the silhouette_avg is:  0.542612238297
+EPS =  0.2
+DBSCAN
+For n_clusters =  3 / the silhouette_avg is:  0.57765635427
+EPS =  0.225
+DBSCAN
+For n_clusters =  3 / the silhouette_avg is:  0.601846734807
+EPS =  0.25
+DBSCAN
+For n_clusters =  3 / the silhouette_avg is:  0.607311123439
+EPS =  0.275
+DBSCAN
+For n_clusters =  3 / the silhouette_avg is:  0.625524764025
+EPS =  0.3
+DBSCAN
+For n_clusters =  2 / the silhouette_avg is:  0.388601377612
+EPS =  0.325
+DBSCAN
+For n_clusters =  2 / the silhouette_avg is:  0.421072984322
+EPS =  0.35
+DBSCAN
+For n_clusters =  1 / the silhouette_avg is:  0.13739855978
+EPS =  0.375
+DBSCAN
+For n_clusters =  1 / the silhouette_avg is:  0.0610947596741
+EPS =  0.4

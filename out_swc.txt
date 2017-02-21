@@ -1,0 +1,54 @@
+KMeans
+For n_clusters =  3 / the silhouette_avg is:  0.562071376798
+KMeans
+For n_clusters =  4 / the silhouette_avg is:  0.575674399242
+KMeans
+For n_clusters =  5 / the silhouette_avg is:  0.564572994306
+KMeans
+For n_clusters =  6 / the silhouette_avg is:  0.521599684311
+KMeans
+For n_clusters =  7 / the silhouette_avg is:  0.462337552713
+KMeans
+For n_clusters =  8 / the silhouette_avg is:  0.431697247842
+KMeans
+For n_clusters =  9 / the silhouette_avg is:  0.38295106221
+KMeans
+For n_clusters =  10 / the silhouette_avg is:  0.327326647922
+KMeans
+For n_clusters =  11 / the silhouette_avg is:  0.320381500704
+KMeans
+For n_clusters =  12 / the silhouette_avg is:  0.342553829908
+KMeans
+For n_clusters =  13 / the silhouette_avg is:  0.338925523005
+KMeans
+For n_clusters =  14 / the silhouette_avg is:  0.341472102226
+KMeans
+For n_clusters =  15 / the silhouette_avg is:  0.345462216298
+KMeans
+For n_clusters =  16 / the silhouette_avg is:  0.34298259705
+KMeans
+For n_clusters =  17 / the silhouette_avg is:  0.347874424644
+KMeans
+For n_clusters =  18 / the silhouette_avg is:  0.346840368278
+KMeans
+For n_clusters =  19 / the silhouette_avg is:  0.33499590035
+KMeans
+For n_clusters =  20 / the silhouette_avg is:  0.333058528198
+KMeans
+For n_clusters =  21 / the silhouette_avg is:  0.347130197045
+KMeans
+For n_clusters =  22 / the silhouette_avg is:  0.343180375854
+KMeans
+For n_clusters =  23 / the silhouette_avg is:  0.342243336011
+KMeans
+For n_clusters =  24 / the silhouette_avg is:  0.341142821927
+KMeans
+For n_clusters =  25 / the silhouette_avg is:  0.334696436806
+KMeans
+For n_clusters =  26 / the silhouette_avg is:  0.345022903829
+KMeans
+For n_clusters =  27 / the silhouette_avg is:  0.343040970501
+KMeans
+For n_clusters =  28 / the silhouette_avg is:  0.34753160386
+KMeans
+For n_clusters =  29 / the silhouette_avg is:  0.342906574074
