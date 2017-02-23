@@ -3,6 +3,7 @@ import time
 import numpy as np
 
 import matplotlib.pyplot as plt
+from matplotlib.axes import Axes
 
 from sklearn import cluster, datasets
 from sklearn.neighbors import kneighbors_graph
@@ -81,7 +82,7 @@ for i_dataset, dataset in enumerate(datasets):
     # eps é um parâmetro que indica a distância máxima entre duas amostras
     # para considerá-las vizinhas
 
-    dbscan = cluster.DBSCAN(eps=.05)
+    dbscan = cluster.DBSCAN(eps=.2)
 
     affinity_propagation = cluster.AffinityPropagation(damping=.9,
                                                        preference=-200)
@@ -91,6 +92,7 @@ for i_dataset, dataset in enumerate(datasets):
         connectivity=connectivity)
 
     birch = cluster.Birch(n_clusters=2)
+
     clustering_algorithms = [
         two_means, affinity_propagation, ms, spectral, ward, average_linkage,
         dbscan, birch]
@@ -108,7 +110,7 @@ for i_dataset, dataset in enumerate(datasets):
         # plotagem
         plt.subplot(4, len(clustering_algorithms), plot_num)
         if i_dataset == 0:
-            plt.title(name, size=18)
+            plt.title(name, size=16)
         plt.scatter(X[:, 0], X[:, 1], color=colors[y_pred].tolist(), s=10)
 
         if hasattr(algorithm, 'cluster_centers_'):
@@ -120,8 +122,9 @@ for i_dataset, dataset in enumerate(datasets):
         plt.xticks(())
         plt.yticks(())
         plt.text(.99, .01, ('%.2fs' % (t1 - t0)).lstrip('0'),
-                 transform=plt.gca().transAxes, size=15,
+                 transform=plt.gca().transAxes, size=14,
                  horizontalalignment='right')
         plot_num += 1
+        plt.axis('auto')
 
 plt.show()
