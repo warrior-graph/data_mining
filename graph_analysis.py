@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import networkx as nx
 import sys
 
 
@@ -16,6 +17,8 @@ def make_graph(x_array, y_array, eps):
     if m != n:
         print("Invalid (x_ or y_)array size")
         return None
+    
+    G = nx.Graph()
 
     adj_matrix = np.zeros([n, n], dtype='int32')
     for i in range(n):
@@ -23,10 +26,12 @@ def make_graph(x_array, y_array, eps):
             sq_eucli = (x_array[i] - x_array[j])**2 + (y_array[i] - y_array[j])**2
             if sq_eucli <= eps**2:
                 adj_matrix[j][i] = adj_matrix[i][j] = 1
+                G.add_edges_from([(i, j), (j, i)])
+            else:
+                G.add_nodes_from([i, j])
+    return adj_matrix, G
 
-    return adj_matrix
-
-adj_g = make_graph(x_data_set, y_data_set, eps)
+adj_g, G = make_graph(x_data_set, y_data_set, eps)
 
 
 print(adj_g)
@@ -54,4 +59,7 @@ for i in range(n):
 plt.xlim(0, 60)
 plt.ylim(0, 60)
 
+plt.figure()
+nx.draw(G)
 plt.show()
+

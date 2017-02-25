@@ -1,0 +1,7 @@
+GraphViz
+NetworkViz
+Pkg.add("GraphLayout")
+Pkg.add("JSON")
+Pkg.add("Plotly")
+Pkg.add("Escher")
+sudo ln -s ~/.julia/v0.4/Escher/bin/escher /usr/local/bin/
